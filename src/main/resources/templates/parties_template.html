@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>5e Challenge Calculator: Parties</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr th:each="party: ${parties}">
+                <td><a href="/parties" th:href="@{/parties(id=${party.id})}" th:text="${party.name}"></a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table th:if="${players} != null">
+        <tbody>
+            <tr th:each="player: ${players}">
+                <td th:text="${player.name}"></td>
+                <td th:text="${player.level}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
