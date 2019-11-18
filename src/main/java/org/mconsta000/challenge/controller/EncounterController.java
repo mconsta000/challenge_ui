@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.mconsta000.challenge.controller.model.EncounterModel;
 import org.mconsta000.challenge.service.EncountersService;
 import org.mconsta000.challenge.service.FoeEncountersService;
 import org.mconsta000.challenge.service.FoesService;
@@ -32,11 +33,18 @@ public class EncounterController {
     public String populateEncounter(@PathVariable(name="id") Integer id, Model model)
         throws IOException{
         if (id != null) {
-            List<FoeEncounterModel> foeEncounters = new ArrayList<FoeEncounterModel>();
+            List<EncounterModel> foeEncounters = new ArrayList<EncounterModel>();
             EncountersModel encounter = encounterService.getEncounter(id).execute().body();
             for (Integer foeEncounterId : encounter.getFoes()) {
                 FoeEncounterModel foeEncounter = foeEncounterServices.getFoeEncounter(foeEncounterId).execute().body();
-                foeEncounters.add(foeEncounter);
+                FoeModel foe = foesService.getFoe(foeEncounter.getFoe()).execute().body();
+
+                EncounterModel em = new EncounterModel();
+                em.setName(foe.getName());
+                em.setXp(foe.getXp());
+                em.setCount(foeEncounter.getCount());
+
+                foeEncounters.add(em);
             }
             model.addAttribute("foeEncounter", foeEncounters);
         }

@@ -27,7 +27,6 @@ public class ChallengeController {
     @Autowired
     EncountersService encountersService;
 
-
     @ModelAttribute("parties")
     public List<PartyModel> populateParties() throws IOException{
         return partiesService.listParties().execute().body();

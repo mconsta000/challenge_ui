@@ -15,8 +15,9 @@
     <table th:if="${foeEncounter} != null">
         <tbody>
             <tr th:each="foe: ${foeEncounter}">
-                <td th:text="${foe.foe}"></td>
+                <td th:text="${foe.name}"></td>
                 <td th:text="${foe.count}"></td>
+                <td th:text="${foe.xp}"></td>
             </tr>
         </tbody>
     </table>
