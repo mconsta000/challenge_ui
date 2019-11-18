@@ -2,7 +2,7 @@ package org.mconsta000.challenge.service;
 
 import java.util.List;
 
-import org.mconsta000.challenge.model.PlayerModel;
+import org.mconsta000.challenge.service.model.PlayerModel;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

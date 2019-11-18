@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>5e Challenge Calculator: Parties</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/jquery/jquery-ui-1.12.1.custom/jquery-ui.css">
+    <link rel="stylesheet" href="/jquery/jquery-ui-1.12.1.custom/jquery-ui.theme.css">
+
+    <script src="/jquery/jquery-3.4.1.js"></script>
+    <script src="/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+</head>
+
+<body>
+    <table th:if="${foeEncounter} != null">
+        <tbody>
+            <tr th:each="foe: ${foeEncounter}">
+                <td th:text="${foe.foe}"></td>
+                <td th:text="${foe.count}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

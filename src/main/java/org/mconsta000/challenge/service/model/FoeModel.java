@@ -1,4 +1,4 @@
-package org.mconsta000.challenge.model;
+package org.mconsta000.challenge.service.model;
 
 public class FoeModel {
     private Integer id;

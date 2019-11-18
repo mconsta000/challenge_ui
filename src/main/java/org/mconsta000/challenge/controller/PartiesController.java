@@ -4,15 +4,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.mconsta000.challenge.model.PartyModel;
-import org.mconsta000.challenge.model.PlayerModel;
 import org.mconsta000.challenge.service.PartiesService;
 import org.mconsta000.challenge.service.PlayersService;
+import org.mconsta000.challenge.service.model.PartyModel;
+import org.mconsta000.challenge.service.model.PlayerModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * PartiesController
@@ -25,10 +26,9 @@ public class PartiesController {
     @Autowired
     PlayersService playersService;
 
-    @GetMapping("/parties")
-    public String challenge(@RequestParam(required=false) Integer id, Model model) throws IOException {
-        model.addAttribute("parties", partiesService.listParties().execute().body());
-
+    @RequestMapping(value="/parties/{id}/",method=RequestMethod.GET)
+    public String populateParty(@PathVariable(name="id") Integer id, Model model)
+        throws IOException{
         if (id != null) {
             List<PlayerModel> players = new ArrayList<PlayerModel>();
             PartyModel party = partiesService.getParty(id).execute().body();
@@ -36,9 +36,8 @@ public class PartiesController {
                 PlayerModel player = playersService.getPlayer(playerId).execute().body();
                 players.add(player);
             }
-            model.addAttribute("players",players);
+            model.addAttribute("players", players);
         }
-
-        return "parties_template";
+        return "party_template";
     }
 }

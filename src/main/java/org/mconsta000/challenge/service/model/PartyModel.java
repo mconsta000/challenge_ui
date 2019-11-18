@@ -1,24 +1,26 @@
-package org.mconsta000.challenge.model;
+package org.mconsta000.challenge.service.model;
+
+import java.util.List;
 
 /**
- * PlayerModel
+ * PartiesModel
  */
-public class PlayerModel {
+public class PartyModel {
     private Integer id;
     private String url;
     private String name;
-    private Integer level;
+    private List<Integer> player;
 
     public Integer getId() {
         return id;
     }
 
-    public Integer getLevel() {
-        return level;
+    public List<Integer> getPlayer() {
+        return player;
     }
 
-    public void setLevel(Integer level) {
-        this.level = level;
+    public void setPlayer(List<Integer> player) {
+        this.player = player;
     }
 
     public String getName() {

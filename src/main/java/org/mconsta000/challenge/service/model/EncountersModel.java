@@ -1,26 +1,26 @@
-package org.mconsta000.challenge.model;
+package org.mconsta000.challenge.service.model;
 
 import java.util.List;
 
 /**
- * PartiesModel
+ * Encounters
  */
-public class PartyModel {
+public class EncountersModel {
     private Integer id;
     private String url;
     private String name;
-    private List<Integer> player;
+    private List<Integer> foes;
 
     public Integer getId() {
         return id;
     }
 
-    public List<Integer> getPlayer() {
-        return player;
+    public List<Integer> getFoes() {
+        return foes;
     }
 
-    public void setPlayer(List<Integer> player) {
-        this.player = player;
+    public void setFoes(List<Integer> foes) {
+        this.foes = foes;
     }
 
     public String getName() {
@@ -42,5 +42,4 @@ public class PartyModel {
     public void setId(Integer id) {
         this.id = id;
     }
-    
 }
