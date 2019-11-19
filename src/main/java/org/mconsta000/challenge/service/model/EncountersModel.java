@@ -10,9 +10,18 @@ public class EncountersModel {
     private String url;
     private String name;
     private List<Integer> foes;
+    private String challenge;
 
     public Integer getId() {
         return id;
+    }
+
+    public String getChallenge() {
+        return challenge;
+    }
+
+    public void setChallenge(String challenge) {
+        this.challenge = challenge;
     }
 
     public List<Integer> getFoes() {

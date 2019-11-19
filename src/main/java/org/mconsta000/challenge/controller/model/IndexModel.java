@@ -1,9 +1,9 @@
 package org.mconsta000.challenge.controller.model;
 
 /**
- * ChallengeModel
+ * IndexModel
  */
-public class ChallengeModel {
+public class IndexModel {
     private Integer party;
     private Integer encounter;
 

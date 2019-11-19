@@ -10,9 +10,18 @@ public class PartyModel {
     private String url;
     private String name;
     private List<Integer> player;
+    private List<EncountersModel> encounters;
 
     public Integer getId() {
         return id;
+    }
+
+    public List<EncountersModel> getEncounters() {
+        return encounters;
+    }
+
+    public void setEncounters(List<EncountersModel> encounters) {
+        this.encounters = encounters;
     }
 
     public List<Integer> getPlayer() {
