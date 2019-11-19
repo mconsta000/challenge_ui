@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <table th:if="${players} != null">
+    <table th:if="${players} != null" th:fragment="playersTable">
         <tbody>
             <tr th:each="player: ${players}">
                 <td th:text="${player.name}"></td>

@@ -48,6 +48,6 @@ public class EncounterController {
             }
             model.addAttribute("foeEncounter", foeEncounters);
         }
-        return "encounter_template";
+        return "encounter_template :: foesTable";
     }
 }

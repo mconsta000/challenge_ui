@@ -38,6 +38,6 @@ public class PartiesController {
             }
             model.addAttribute("players", players);
         }
-        return "party_template";
+        return "party_template :: playersTable";
     }
 }
