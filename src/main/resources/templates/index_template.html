@@ -45,7 +45,9 @@
                     cache: false
                 })
                     .done(function (html) {
+                        $("#challenge_result").hide();
                         $("#challenge_result").html(html);
+                        $("#challenge_result").fadeIn("slow");
                     });
             }
         }
