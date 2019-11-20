@@ -32,29 +32,30 @@
                     });
             }
         }
+        function update_on_selected(selected, service, target, message) {
+            if (selected != "") {
+                $.ajax({
+                    url: "/" + service + "/" + selected + "/",
+                    cache: false
+                })
+                    .done(function (html) {
+                        $(target).html(html);
+                    });
+                update_challenge();
+            } else {
+                $(target).html(message);
+                $("#challenge_result").html("");
+            }
+        }
         $(document).ready(function () {
             $("#party").selectmenu({
                 select: function (event, ui) {
-                    $.ajax({
-                        url: "/parties/" + ui.item.value + "/",
-                        cache: false
-                    })
-                        .done(function (html) {
-                            $("#player_table").html(html);
-                            update_challenge();
-                        });
+                    update_on_selected(ui.item.value, "parties", "#player_table", "Select a party");
                 }
             });
             $("#encounter").selectmenu({
                 select: function (event, ui) {
-                    $.ajax({
-                        url: "/encounters/" + ui.item.value + "/",
-                        cache: false
-                    })
-                        .done(function (html) {
-                            $("#foe_table").html(html);
-                            update_challenge();
-                        });
+                    update_on_selected(ui.item.value, "encounters", "#foe_table", "Select an encounter");
                 }
             });
         });
