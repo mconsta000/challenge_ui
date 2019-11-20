@@ -17,6 +17,21 @@
     <script src="/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 
     <script>
+        function update_challenge() {
+            //$("#challenge_result").html("hello");
+            partyId = $("#party option:checked").val();
+            encounterId = $("#encounter option:checked").val();
+
+            if (partyId != "" && encounterId != "") {
+                $.ajax({
+                    url: "/parties/" + partyId + "/encounters/" + encounterId + "/",
+                    cache: false
+                })
+                    .done(function (html) {
+                        $("#challenge_result").html(html);
+                    });
+            }
+        }
         $(document).ready(function () {
             $("#party").selectmenu({
                 select: function (event, ui) {
@@ -24,8 +39,9 @@
                         url: "/parties/" + ui.item.value + "/",
                         cache: false
                     })
-                        .done(function( html ) {
-                            $( "#player_table" ).html( html );
+                        .done(function (html) {
+                            $("#player_table").html(html);
+                            update_challenge();
                         });
                 }
             });
@@ -35,8 +51,9 @@
                         url: "/encounters/" + ui.item.value + "/",
                         cache: false
                     })
-                        .done(function( html ) {
-                            $( "#foe_table" ).html( html );
+                        .done(function (html) {
+                            $("#foe_table").html(html);
+                            update_challenge();
                         });
                 }
             });
@@ -57,9 +74,14 @@
         <div style="float: left">
             <select th:field="*{encounter}">
                 <option value=""></option>
-                <option th:each="encounter: ${encounters}" th:text="${encounter.name}" th:value="${encounter.id}">Item 1</option>
+                <option th:each="encounter: ${encounters}" th:text="${encounter.name}" th:value="${encounter.id}">Item 1
+                </option>
             </select>
             <div id="foe_table">Select an encounter</div>
+        </div>
+
+        <div style="float: left">
+            <div id="challenge_result">Challenge Calc</div>
         </div>
     </form>
 </body>
