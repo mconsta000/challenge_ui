@@ -13,11 +13,16 @@
 
 <body>
     <table th:if="${foeEncounter} != null"  th:fragment="foesTable">
-        <tbody>
+        <thead class="ui-widget-header">
+            <th>Foe</th>
+            <th>Quantity</th>
+            <th>XP (Each)</th>
+        </thead>
+        <tbody class="ui-widget-content">
             <tr th:each="foe: ${foeEncounter}">
                 <td th:text="${foe.name}"></td>
-                <td th:text="${foe.count}"></td>
-                <td th:text="${foe.xp}"></td>
+                <td th:text="${foe.count}" class="number"></td>
+                <td th:text="${#numbers.formatInteger(foe.xp,1,'COMMA')}" class="number"></td>
             </tr>
         </tbody>
     </table>

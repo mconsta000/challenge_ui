@@ -9,7 +9,16 @@
 
     <style>
         table {
-            border: 1px black solid;
+            width: 100%;
+        }
+        td {
+            padding: 5px;
+        }
+        th {
+            padding: 3px;
+        }
+        .number {
+            text-align: right;
         }
     </style>
 
@@ -62,7 +71,7 @@
     </script>
 </head>
 
-<body>
+<body class="ui-widget">
     <form action="#" th:action="@{/}" th:object="${indexModel}" method="post">
         <div style="float: left">
             <select th:field="*{party}">

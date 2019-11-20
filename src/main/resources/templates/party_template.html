@@ -13,10 +13,14 @@
 
 <body>
     <table th:if="${players} != null" th:fragment="playersTable">
-        <tbody>
+        <thead class="ui-widget-header">
+            <th>Player Name</th>
+            <th>Level</th>
+        </thead>
+        <tbody class="ui-widget-content">
             <tr th:each="player: ${players}">
                 <td th:text="${player.name}"></td>
-                <td th:text="${player.level}"></td>
+                <td th:text="${player.level}" class="number"></td>
             </tr>
         </tbody>
     </table>
