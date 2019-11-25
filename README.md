@@ -2,7 +2,7 @@
 
 A Spring Boot Web Application that displays the 5e challenge rating of an encounter.
 
-Currently work in progress the UI will display encounters entered using the [API layer]((https://github.com/mconsta000/challenge_api))
+Currently work in progress. The UI is readonly and will display encounters entered using the [API layer]((https://github.com/mconsta000/challenge_api))
 
 ## Dependencies
 
