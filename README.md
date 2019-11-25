@@ -14,4 +14,4 @@ Currently work in progress. The UI is readonly and will display encounters enter
 
 `java -jar .\target\challenge_ui-0.0.1-SNAPSHOT.jar`
 
-Access the UI at http://localhost:8080/
+Access the UI at <http://localhost:8080/>
