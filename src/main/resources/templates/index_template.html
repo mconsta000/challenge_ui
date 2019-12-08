@@ -34,8 +34,10 @@
     <script src="/jquery/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 
     <script>
+        /*
+            Update the challenge panel based in reaction to the a state change
+        */
         function update_challenge() {
-            //$("#challenge_result").html("hello");
             partyId = $("#party option:checked").val();
             encounterId = $("#encounter option:checked").val();
 
@@ -44,20 +46,23 @@
                     url: "/parties/" + partyId + "/encounters/" + encounterId + "/",
                     cache: false
                 })
-                    .done(function (html) {
+                    .done((html) =>{
                         $("#challenge_result").hide();
                         $("#challenge_result").html(html);
                         $("#challenge_result").fadeIn("slow");
                     });
             }
         }
+        /*
+            Update the selected panel in reaction to a drop down state change
+        */
         function update_on_selected(selected, service, target, message) {
             if (selected != "") {
                 $.ajax({
                     url: "/" + service + "/" + selected + "/",
                     cache: false
                 })
-                    .done(function (html) {
+                    .done((html) => {
                         $(target).html(html);
                     });
                 update_challenge();
@@ -66,14 +71,17 @@
                 $("#challenge_result").html("");
             }
         }
-        $(document).ready(function () {
+        /*
+            Setup jQuery event hooks
+        */
+        $(document).ready(() => {
             $("#party").selectmenu({
-                select: function (event, ui) {
+                select: (event, ui) => {
                     update_on_selected(ui.item.value, "parties", "#player_table", "Select a party");
                 }
             });
             $("#encounter").selectmenu({
-                select: function (event, ui) {
+                select: (event, ui) => {
                     update_on_selected(ui.item.value, "encounters", "#foe_table", "Select an encounter");
                 }
             });
