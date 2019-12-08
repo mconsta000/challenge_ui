@@ -38,8 +38,8 @@
             Update the challenge panel based in reaction to the a state change
         */
         function update_challenge() {
-            partyId = $("#party option:checked").val();
-            encounterId = $("#encounter option:checked").val();
+            let partyId = $("#party option:checked").val();
+            let encounterId = $("#encounter option:checked").val();
 
             if (partyId != "" && encounterId != "") {
                 $.ajax({
